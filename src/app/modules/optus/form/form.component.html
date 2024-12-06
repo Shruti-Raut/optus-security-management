@@ -1,0 +1,18 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="outer-container">
+    <mat-card fxLayout="column" fxLayoutAlign="center center" class="card-container">
+      <div class="logo">
+        <img src="../../../../assets/images/BxTxLogoDesign.png" alt="BxTx 360 Logo" />
+      </div>
+  
+      <div class="form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="name" placeholder="Enter your name" />
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="!name" (click)="StartQuestionForm()">
+          Start Questionnaire
+        </button>
+      </div>
+    </mat-card>
+  </div>
+  

@@ -1,0 +1,58 @@
+.section-navigation button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    border-radius: 20%;
+  }
+  
+  .section-navigation button.active {
+    background-color: #001D3A;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+
+  
+  .question-item {
+    margin-top: 2%;
+    margin-bottom: 20px;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+  }
+  
+  .section-navigation{
+    padding: 2%;
+  }
+
+  .fixed-card {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures the card stays on top */
+    background-color: white; /* Matches the card's background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+    padding: 10px;
+    margin: 0;
+}
+
+.questions-container {
+    margin-top: 11%; /* Add space to avoid overlap with the fixed card */
+    padding: 10px;
+}
+
+.buttonClass{
+    background-color: #001D3A;
+    color: white;
+    height: 2.5rem;
+}

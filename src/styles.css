@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+    --darkPrimary: #043E72;
+    --tealSecondary: #46B3A5;
+    --accent: #D7C311;
+    --secondaryBg: #E1EDF8;
+    --white: #ffffff;
+    --black: #000000;
+    --tertiaryBg: #F6F6F6;
+    --primaryLabel: #363637;
+    --secondaryLabel: #7D8394;
+    --tertiaryLabel: #AEAEAE;
+    --success: #52C41A;
+    --error: #FF4D4F;
+    --warningOne: #F0D752;
+    --warningTwo: #FAAD14;
+    --infoSnackBar: #C6DCFA;
+    --errorSnackbar: #FBCECF;
+    --errorColor: #C7484B;
+    --successSnackbar: #C5F2C5;
+    --successColor: #288528;
+    --warningSnackbar: #FAE4C8;
+    --warningColor: #C68431;
+    --pastelPink: #F1D8E9;
+    --lightYellow: #F3EEC5;
+    --brightGreen: #DEF8E4;
+    --pending: #EDF0CB;
+    --rejected: #F9E0E0;
+    --grey: #F6F6F6;
+    --darkGrey: #575555;
+    --lightSecondaryBg: #F9FBFF;
+    --lightSecondaryPurple: #8887c3;
+    --navyBlue: rgb(0, 81, 255);
+    --lightYellow: #EDF0CC;
+    --lightGreen: #E2F2E1;
+    --lightRed: #F9E0E0;
+
+
+}
+
+.padding2{
+    padding: 2%;
+}

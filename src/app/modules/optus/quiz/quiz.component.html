@@ -1,0 +1,38 @@
+<div class="padding2">
+    <mat-card class="fixed-card">
+        <div class="section-navigation">
+            <h2>Compliance Questionnaire</h2>
+            <button *ngFor="let section of sections" 
+                    (click)="selectSection(section)"
+                    [class.active]="selectedSection === section"
+                    [disabled]="!hasQuestions(section)">
+                {{ section }}
+                <span *ngIf="selectedSection === section">{{ Section_Name }}</span>
+            </button>
+        </div>
+    </mat-card>
+    
+    <div class="questions-container" fxLayoutGap="2%">
+        <h2>Section {{ selectedSection }} : {{ Section_Name }}</h2>
+        <mat-divider></mat-divider>
+        <div>
+            <div *ngFor="let question of questions" class="question-item">
+                <div>{{ question.Question_No }}. {{ question.Question }}</div>
+                <textarea placeholder="Share your response here..."></textarea>
+            </div>
+        </div>
+        <div fxLayoutGap="2%" fxLayoutAlign="start strach">
+            <div>
+                <button class="buttonClass">Save</button>
+            </div>
+            <div class="navigation-buttons" fxLayoutAlign="end end">
+                <button class="buttonClass"  (click)="goToBackSection()" [disabled]="!canGoBack()">
+                    <mat-icon>keyboard_arrow_left</mat-icon>
+                </button>
+                <button class="buttonClass" (click)="goToNextSection()" [disabled]="!canGoNext()">
+                    <mat-icon>keyboard_arrow_right</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
