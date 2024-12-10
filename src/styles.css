@@ -3,6 +3,15 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+@font-face {
+    font-family: 'Ubuntu-Regular';
+    src: url('./assets/Fonts/Ubuntu/Ubuntu-Regular.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Ubuntu-Light';
+    src: url('./assets/Fonts/Ubuntu/Ubuntu-Light.ttf') format('opentype');
+}
 :root {
     --darkPrimary: #043E72;
     --tealSecondary: #46B3A5;
@@ -44,4 +53,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .padding2{
     padding: 2%;
+}
+
+.centered-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+}
+
+.buttonCls {
+    background-color:  #001D3A;;
+    color: var(--white);
+    padding: 0.7rem 0.7rem;
+    height: 2.5rem;
+    font-size: .87rem;
+    border-radius: 0.2rem;
+    border: none;
+    cursor: pointer;
 }
