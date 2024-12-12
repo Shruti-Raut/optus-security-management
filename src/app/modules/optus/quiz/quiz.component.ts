@@ -70,7 +70,6 @@ export class QuizComponent {
         this.isLogging = true;
         setTimeout(() => {
           this.isLogging = false;
-          this.autoClosePopup();
         }, 2000);
       },
       (error) => {
@@ -84,6 +83,7 @@ export class QuizComponent {
       (data) => {
         let res: any = JSON.parse(JSON.stringify(data));
         this.pdfEvalutionData = res
+        this.autoClosePopup();
       },
       (error) => {
       }
@@ -137,6 +137,7 @@ export class QuizComponent {
 
 
   goToNextSection() {
+    this.showDetails=false
     const currentIndex = this.sections.indexOf(this.selectedSection);
     if (currentIndex < this.sections.length - 1) {
       this.selectSection(this.sections[currentIndex + 1]);
@@ -145,6 +146,7 @@ export class QuizComponent {
 
   // Navigate to the previous section
   goToBackSection() {
+    this.showDetails=false
     const currentIndex = this.sections.indexOf(this.selectedSection);
     if (currentIndex > 0) {
       this.selectSection(this.sections[currentIndex - 1]);
