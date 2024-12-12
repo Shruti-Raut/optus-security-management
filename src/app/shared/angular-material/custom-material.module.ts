@@ -25,7 +25,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
 
@@ -57,7 +57,8 @@ import { MatDividerModule } from '@angular/material/divider';
         MatRadioModule,
         MatProgressSpinnerModule,
         MatToolbarModule,
-        MatDividerModule
+        MatDividerModule,
+        MatTooltipModule
     ],
     exports: [
         MatButtonModule,

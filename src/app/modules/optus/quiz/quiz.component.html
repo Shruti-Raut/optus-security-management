@@ -1,4 +1,4 @@
-<div class="padding2">
+<div class="padding2" style="font-family: Urbanist;">
     <mat-card class="fixed-card">
         <div class="section-navigation">
             <h2>Compliance Questionnaire</h2>
@@ -24,7 +24,8 @@
                     <div *ngIf="question.PrimaryQuestion.DocumentUpload">
                         <div class="uploadFileClass">
                             <label for="fileInput_{{ question.Question_NO }}">
-                                <button id="Announcement_Button_UploadFile" class="UploadButton" (click)="triggerFileUpload(question.Question_NO)">
+                                <button id="Announcement_Button_UploadFile" class="UploadButton"
+                                    (click)="triggerFileUpload(question.Question_NO)">
                                     Upload File
                                     <mat-icon>upload</mat-icon>
                                 </button>
@@ -51,9 +52,19 @@
                 </div>
 
                 <div *ngIf="showDetails" class="evaluation-container">
+                    <div *ngIf="question.PrimaryQuestion.DocumentURL" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2px" style="padding: 8px 15px;">
+                        <mat-icon style="transform: rotate(44deg);" matTooltip="Attach File">insert_link</mat-icon>
+                        <div (click)="openUploadFile(question.PrimaryQuestion.DocumentURL)" (mouseover)="hover = true"
+                        (mouseout)="hover = false"
+                        [style.textDecoration]="hover ? 'underline' : 'none'">
+                            {{ question.uploadedFile?.name }}
+                        </div>
+                    </div>
+                    
+
                     <div *ngIf="getEvaluationsForPDF(question.Question_NO) as evaluations">
                         <div *ngFor="let evaluation of evaluations" class="evaluation-summary">
-                            <div fxLayout="row" fxLayoutAlign="start center" >
+                            <div fxLayout="row" fxLayoutAlign="start center">
                                 <div class="classification-container">
                                     <span class="classification-badge" [ngClass]="{
                                     'incomplete': evaluation.DocumentEvaluation.Classification === 'No Policy Uploaded',
@@ -103,26 +114,36 @@
                             {{ extractQuestionLetter(data.Subquestion_No) }}.
                             {{ data.Question }}
                         </div>
-                        <div fxLayout="row">
-                            <div style="font-weight: 500;">Answer:</div>
-                            <div> {{ data.Answer || 'No answer provided' }}</div>
-                        </div>
-                        <div class="result" *ngIf="data.Answer">
-                            <div style="font-weight: 500;">
-                                Score: {{ data.EvaluationResult.Score }}
+                        <div style="padding: 0px 15px;font-size: 14px;">
+                            <div fxLayout="row" style="font-weight:550;">
+                                <div> {{ data.Answer || 'No answer provided' }}</div>
                             </div>
-                            <div fxLayout="row">
-                                <div style="color: red; font-weight: 400;">
-                                    Reasoning:
+                            <div class="result" *ngIf="data.Answer">
+                               <div fxLayout="row"  fxLayoutAlign="start center">
+                                <div style="font-weight: 600;">
+                                    Score: {{ data.EvaluationResult.Score }}
                                 </div>
-                                <div>
-                                    {{ data.EvaluationResult.Reasoning }}
+
+                                <span class="divider">|</span>
+
+                                <div class="compliance-section">
+                                    <span>
+                                        {{
+                                        data.EvaluationResult.Score < 3 ? 'Not Compliant' : 'Compliant' }} </span>
+                                </div>
+                               </div>
+                                <div fxLayout="row" fxLayoutGap="1%" style="font-size: 14px;">
+                                    <div style="color: red; font-weight: 400;">
+                                        Reason:
+                                    </div>
+                                    <div>
+                                        {{ data.EvaluationResult.Reasoning }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <div fxLayoutGap="2%" fxLayoutAlign="start stretch">

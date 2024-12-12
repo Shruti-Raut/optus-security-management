@@ -32,6 +32,7 @@ export class QuizComponent {
   selectedSection: string = this.sections[0]; // Default to the first section
   questions: any[] = [];
   Section_Name: string = '';
+  hover: boolean = false;
 
   constructor(public marketingAPI: MarketingService) {
     this.setInitialSection();
@@ -98,6 +99,10 @@ export class QuizComponent {
   closePopup(): void {
     this.showPopup = true;
     this.showDetails = true
+  }
+
+  openUploadFile(url:any){
+    window.open(url, '_blank');
   }
 
   setInitialSection() {
