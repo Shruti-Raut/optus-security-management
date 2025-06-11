@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
- 
+
 void main() => runApp(LoginApp());
- 
+
 class LoginApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,42 +12,43 @@ class LoginApp extends StatelessWidget {
     );
   }
 }
- 
+
 class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
- 
+
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _userIdController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _obscurePassword = true;
- 
+
   void _login() {
     if (_formKey.currentState!.validate()) {
-      String userId = _userIdController.text;
-      String password = _passwordController.text;
- 
+      final userId = _userIdController.text;
+      final password = _passwordController.text;
+
       // TODO: Add authentication logic here
       print('User ID: $userId\nPassword: $password');
+
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Logging in...')),
+        const SnackBar(content: Text('Logging in...')),
       );
     }
   }
- 
+
   @override
   void dispose() {
     _userIdController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
+      appBar: AppBar(title: const Text('Login')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -56,38 +57,43 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormField(
+                key: const Key('user_id_field'),
                 controller: _userIdController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'User ID',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) =>
-                    value!.isEmpty ? 'Please enter your User ID' : null,
+                    value == null || value.isEmpty ? 'Please enter your User ID' : null,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
+                key: const Key('password_field'),
                 controller: _passwordController,
                 obscureText: _obscurePassword,
                 decoration: InputDecoration(
                   labelText: 'Password',
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
+                    key: const Key('toggle_password_visibility'),
                     icon: Icon(
-                      _obscurePassword
-                          ? Icons.visibility_off
-                          : Icons.visibility,
+                      _obscurePassword ? Icons.visibility_off : Icons.visibility,
                     ),
-                    onPressed: () =>
-                        setState(() => _obscurePassword = !_obscurePassword),
+                    onPressed: () {
+                      setState(() {
+                        _obscurePassword = !_obscurePassword;
+                      });
+                    },
                   ),
                 ),
                 validator: (value) =>
-                    value!.isEmpty ? 'Please enter your Password' : null,
+                    value == null || value.isEmpty ? 'Please enter your Password' : null,
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               ElevatedButton(
+                key: const Key('login_button'),
                 onPressed: _login,
-                child: Text('Login'),
+                child: const Text('Login'),
               ),
             ],
           ),
