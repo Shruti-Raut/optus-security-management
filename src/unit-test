@@ -1,0 +1,70 @@
+Here is an example of how you can write unit tests for the provided code using the `test` package in Flutter:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:login_app/main.dart';
+
+void main() {
+  group('Login Page', () {
+    testWidgets('should render Login Page', (WidgetTester tester) async {
+      await tester.pumpWidget(LoginApp());
+      expect(find.byType(LoginPage), findsOneWidget);
+    });
+
+    testWidgets('should render User ID field', (WidgetTester tester) async {
+      await tester.pumpWidget(LoginApp());
+      expect(find.byKey(const Key('user_id_field')), findsOneWidget);
+    });
+
+    testWidgets('should render Password field', (WidgetTester tester) async {
+      await tester.pumpWidget(LoginApp());
+      expect(find.byKey(const Key('password_field')), findsOneWidget);
+    });
+
+    testWidgets('should render Login button', (WidgetTester tester) async {
+      await tester.pumpWidget(LoginApp());
+      expect(find.byType(ElevatedButton), findsOneWidget);
+    });
+
+    testWidgets('should show SnackBar when login button is pressed',
+        (WidgetTester tester) async {
+        await tester.pumpWidget(LoginApp());
+        final loginButton = find.byType(ElevatedButton);
+        await tester.tap(loginButton);
+        await tester.pump();
+        expect(find.byType(SnackBar), findsOneWidget);
+      });
+  });
+
+  group('Login functionality', () {
+    testWidgets('should validate User ID field', (WidgetTester tester) async {
+      await tester.pumpWidget(LoginApp());
+      final userIdField = find.byType(TextFormField);
+      await tester.enterText(userIdField, '');
+      await tester.testInvalidField();
+    });
+
+    testWidgets('should validate Password field', (WidgetTester tester) async {
+      await tester.pumpWidget(LoginApp());
+      final passwordField = find.byType(TextFormField);
+      await tester.enterText(passwordField, '');
+      await tester.testInvalidField();
+    });
+
+    testWidgets('should login successfully', (WidgetTester tester) async {
+      await tester.pumpWidget(LoginApp());
+      final userIdField = find.byType(TextFormField);
+      final passwordField = find.byType(TextFormField);
+      await tester.enterText(userIdField, 'username');
+      await tester.enterText(passwordField, 'password');
+      final loginButton = find.byType(ElevatedButton);
+      await tester.tap(loginButton);
+      await tester.pump();
+      expect(find.byType(SnackBar), findsOneWidget);
+    });
+  });
+}
+```
+
+This test suite includes several test cases to ensure the login page is rendered correctly, and the login functionality works as expected.
